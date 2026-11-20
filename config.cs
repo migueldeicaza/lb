@@ -20,6 +20,7 @@ public class Config {
 	[XmlAttribute] public string Prefix;
 	[XmlAttribute] public string BlogTemplate;
 	[XmlAttribute] public string EntryTemplate;
+	[XmlAttribute] public string SummaryTemplate;
 	[XmlAttribute] public string CommentsStub;
 	[XmlAttribute] public string EntrySpecific;
 	[XmlAttribute] public string ImageDirectory;
@@ -55,6 +56,10 @@ public class Config {
 				return false;
 			case "-e": case "--entry-template":
 				if (NextArgument (args, ref i, ref EntryTemplate))
+					break;
+				return false;
+			case "-s": case "--summary-template":
+				if (NextArgument (args, ref i, ref SummaryTemplate))
 					break;
 				return false;
 			case "-w": case "--widgets":
@@ -93,6 +98,10 @@ public class Config {
 					break;
 				if (ExtractArgument ("--entry-template", arg, ref EntryTemplate))
 					break;
+				if (ExtractArgument ("-s", arg, ref SummaryTemplate))
+					break;
+				if (ExtractArgument ("--summary-template", arg, ref SummaryTemplate))
+					break;
 				if (ExtractArgument ("-d", arg, ref BlogDirectory))
 					break;
 				if (ExtractArgument ("--blog-directory", arg, ref BlogDirectory))
@@ -128,6 +137,7 @@ Options:
   -d, --blog-directory=DIR    Where to find blog entry files (*.txt, *.html).
   -b, --blog-template=FILE    Blog template file .
   -e, --entry-template=FILE   Entry template file.
+  -s, --summary-template=FILE Summary card template file.
   -x, --rss-filename=FILE     Basename for RSS filename.
   -t, --thumbnail-command=CMD Command to use to generate thumbnails.
                                 {0} is the input file.

@@ -1,54 +1,80 @@
-.code-xml, .code-csharp
-{
-        margin: 1em 0;
-	padding:.5em 1em;
-	font-size: 10pt;
-	font-family: "Consolas", "Courier New", Courier;
-	background:whitesmoke;
-	border: solid 1px silver;
-	line-height:110%;
-	overflow: auto;
+:root {
+  color-scheme: light;
+  --paper: #fcfbf8;
+  --ink: #252b2c;
+  --muted: #657071;
+  --line: #dce1dd;
+  --accent: #166c70;
+  --code: #f0f3f1;
 }
 
-.shell { 
-	border-style: solid; background: #554f55; color: #eee;
-	border-width: 1px; padding: 1em; 
-	margin:15px;
-}
-
-.separator {
-	border-bottom: 1px dotted #aaaaaa; padding-top: 1em; padding-bottom: 1em;
-}
-
-pre {
-	border: solid 1px silver;
-}
-
-p code, li code, tt {
-	white-space: nowrap;
-	border: #d3d3d3 1px solid;
-	padding: 1px 2px 1px 2px;
-	background-color: #eee;
-	font-size: 80%;
-}
-
-.blog-body {
-       font-size: 12pt;
-	font-family: "ff-tisa-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-h2 {
-	padding-top: .5em;
-	margin-bottom: .5em;
-}
-
-table {
-    border: 1px solid #c1c7cd;
-    padding: 5px 8px;
-    margin: 1em;
-}
-
-td, th {
-    padding: .1em .4em;
-    border: 1px solid #c1c7cd;
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.7 Georgia, Cambria, "Times New Roman", serif; }
+a { color: var(--accent); text-underline-offset: .16em; }
+a:hover { color: #0b4c50; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+img, video, iframe { max-width: 100%; }
+img { height: auto; }
+.site-shell { width: min(100% - 3rem, 74rem); margin-inline: auto; }
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner, .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+.header-inner { min-height: 5rem; }
+.site-name { color: var(--ink); font: 700 1.24rem/1.2 system-ui, -apple-system, sans-serif; letter-spacing: -.04em; text-decoration: none; }
+.site-name-dot { color: var(--accent); }
+.site-header nav { display: flex; gap: clamp(1rem, 3vw, 2.25rem); }
+.site-header nav a, .site-footer, .eyebrow, .read-link, .post-footer { font-family: system-ui, -apple-system, sans-serif; }
+.site-header nav a { color: var(--muted); font-size: .84rem; font-weight: 600; text-decoration: none; }
+.site-header nav a:hover { color: var(--accent); }
+main.site-shell { min-height: 60vh; padding-block: clamp(3rem, 7vw, 6.5rem) 7rem; }
+.page-intro { max-width: 47rem; margin-bottom: 2.5rem; }
+.eyebrow { margin: 0 0 .75rem; color: var(--muted); font-size: .75rem; font-weight: 700; letter-spacing: .1em; line-height: 1.5; text-transform: uppercase; }
+.eyebrow a { color: inherit; text-decoration: none; }
+.eyebrow span { padding-inline: .4rem; color: #aab1ad; }
+h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -.035em; }
+.page-heading { margin: 0; font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 500; }
+.entries { max-width: 48rem; }
+.post-summary { padding: 2rem 0 2.2rem; border-top: 1px solid var(--line); }
+.post-summary h2 { margin: 0 0 .7rem; font-size: clamp(1.55rem, 3vw, 2.15rem); font-weight: 500; }
+.post-summary h2 a { color: var(--ink); text-decoration: none; }
+.post-summary h2 a:hover { color: var(--accent); }
+.summary-excerpt { margin: 0 0 .7rem; color: #485354; font-size: 1.02rem; }
+.read-link { font-size: .83rem; font-weight: 700; text-decoration: none; }
+.post { max-width: 48rem; }
+.post-header { margin-bottom: 3rem; }
+.post-header h1 { margin: 0; font-size: clamp(2.7rem, 6vw, 4.7rem); font-weight: 500; overflow-wrap: anywhere; }
+.post-body { overflow-wrap: break-word; }
+.post-body > :first-child { margin-top: 0; }
+.post-body p, .post-body ul, .post-body ol, .post-body blockquote { margin-block: 0 1.4em; }
+.post-body h1, .post-body h2, .post-body h3 { margin: 2em 0 .55em; }
+.post-body h1 { font-size: 2.1rem; }
+.post-body h2 { font-size: 1.65rem; }
+.post-body h3 { font-size: 1.3rem; }
+.post-body blockquote { margin-inline: 0; padding-left: 1.25rem; border-left: 3px solid var(--accent); color: #536061; }
+.post-body pre, .post-body xmp, .post-body .code-csharp, .post-body .code-xml, .post-body .shell { overflow-x: auto; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: .3rem; background: var(--code); font: .83rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.post-body .shell { background: #243031; color: #f2f4f1; }
+.post-body :not(pre) > code, .post-body tt { padding: .1em .25em; border-radius: .2rem; background: var(--code); font: .85em ui-monospace, SFMono-Regular, Consolas, monospace; }
+.post-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .92rem; }
+.post-body th, .post-body td { padding: .5rem .75rem; border: 1px solid var(--line); }
+.post-body img { max-width: 100%; }
+.post-footer { margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .85rem; font-weight: 700; }
+.archive-page .entries { display: none; }
+.archive-years { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2rem 2.5rem; max-width: 60rem; }
+.archive-year { border-top: 1px solid var(--line); padding-top: .85rem; }
+.archive-year h3 { margin: 0 0 .55rem; font: 700 1rem/1.4 system-ui, -apple-system, sans-serif; }
+.archive-year ul { margin: 0; padding: 0; list-style: none; columns: 2; }
+.archive-year li { margin-bottom: .2rem; }
+.archive-year a { color: var(--muted); font: .84rem/1.6 system-ui, -apple-system, sans-serif; text-decoration: none; }
+.archive-year a:hover { color: var(--accent); text-decoration: underline; }
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
+.footer-inner { min-height: 6rem; }
+.site-footer p { margin: 0; }
+.site-footer a { color: inherit; }
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .site-shell { width: min(100% - 2rem, 74rem); }
+  .header-inner, .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 1rem; }
+  .site-header nav { gap: 1.25rem; }
+  .post-body img[align] { float: none; display: block; margin: 1rem auto; }
+  .post-body pre, .post-body xmp { margin-inline: -.5rem; }
 }

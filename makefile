@@ -29,9 +29,10 @@ c: lb.exe twentyten/blog-template.standard
 #
 # Builds the standard blog, with bootstrap
 #
-k: lb.exe startbootstrap/blog-template
-	-mkdir sb-gen; rsync -a startbootstrap/css startbootstrap/js startbootstrap/fonts sb-gen
-	mono --debug lb.exe -c config.xml -p sb-gen -w startbootstrap/widgets -b startbootstrap/blog-template -e startbootstrap/entry-template.start
+k: lb.exe startbootstrap/blog-template startbootstrap/summary-template
+	-mkdir -p sb-gen/css
+	cp startbootstrap/css/miguel-style.css sb-gen/css/miguel-style.css
+	mono --debug lb.exe -c config.xml -p sb-gen -b startbootstrap/blog-template -e startbootstrap/entry-template.start -s startbootstrap/summary-template
 
 #
 # Builds the MonoMac blog
@@ -57,6 +58,7 @@ pushb: b
 	make do-push DIR=output REMOTE_DIRECTORY=$(REMOTE_BLOG)
 
 pushc: k 
+	rsync -zu --checksum -pr -v --rsh=ssh sb-gen/css/miguel-style.css $(REMOTE_BLOG)/css/
 	make do-push DIR=sb-gen REMOTE_DIRECTORY=$(REMOTE_BLOG)
 
 pushm: m
@@ -70,8 +72,8 @@ do-push:
 	chmod 644 $(DIR)/*html $(DIR)/*rss2 
 	rsync -zu --checksum -pr -v --rsh=ssh texts prettyprint.js log-style.css 		\
 	$(DIR)/archive $(DIR)/*.rss2 $(DIR)/index.html $(DIR)/page*.html $(DIR)/all.html	\
-	$(DIR)/css $(DIR)/js $(DIR)/fonts  \
-	$(DIR)/*.css $(DIR)/*.gif \
+		$(wildcard $(DIR)/sitemap.xml)  \
+		$(wildcard $(DIR)/*.css) $(wildcard $(DIR)/*.gif) \
 	$(REMOTE_DIRECTORY)
 
 check-update:

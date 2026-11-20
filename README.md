@@ -77,6 +77,15 @@ permalink entries in the archive/ directory.
 
 The result is then pushed to a server with rsync.
 
+The live blog uses `make k` for a local build in `sb-gen/` and `make push` to
+build and upload it. Its theme lives in `startbootstrap/blog-template`,
+`startbootstrap/entry-template.start`, `startbootstrap/summary-template`, and
+`startbootstrap/css/miguel-style.css`. Despite the directory name, this theme
+uses plain CSS and does not load Bootstrap or jQuery. The home and month pages
+show short excerpts; individual posts retain their existing archive URLs.
+The generated `sitemap.xml` lists individual posts. Archive listings and old
+`pageN.html` pages remain available for links but are marked `noindex`.
+
 The AnalyticsStub is the file provided to you by Google as the stub that you must insert.
 
 Lame Blog also now supports Markdown-formatted files as blog entries. They take the `.md` extension, and are regular Markdown

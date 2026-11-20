@@ -1,0 +1,6 @@
+<article class="post-summary">
+  <p class="eyebrow"><time datetime="@ENTRY_DATEISO@">@ENTRY_DATECAPTION@</time></p>
+  <h2><a href="@ENTRY_LOCAL_PERMALINK@">@ENTRY_CAPTION@</a></h2>
+  <p class="summary-excerpt">@ENTRY_EXCERPT@</p>
+  <a class="read-link" href="@ENTRY_LOCAL_PERMALINK@">Read article <span aria-hidden="true">→</span></a>
+</article>

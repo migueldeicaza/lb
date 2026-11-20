@@ -1,25 +1,8 @@
-<!-- Blog Post -->
-
-<!-- Title -->
-<h1><a href="@BASEDIR@@ENTRY_PERMALINK@">@ENTRY_CAPTION@</a></h1>
-
-<!-- Author -->
-<p class="lead">
-    by <a href="#">@COPYRIGHT@</a>
-</p>
-
-<!--<hr>-->
-<!-- Preview Image -->
-<!--img class="img-responsive" src="http://placehold.it/900x300" alt=""-->
-<!--<hr>-->
-
-<!-- Post Content -->
-<div class="blog-body">
-	@ENTRY_BODY@
-</div>
-<!-- Date/Time -->
-<p><span class="glyphicon glyphicon-time"></span> Posted on <a href="@ENTRY_URL_PERMALINK@">@ENTRY_DATECAPTION@</a></p>
-
-<hr>
-
-
+@ENTRY_ANCHOR@<article class="post">
+  <header class="post-header">
+    <p class="eyebrow"><a href="@ENTRY_ARCHIVE_URL@">Writing</a> <span aria-hidden="true">/</span> <time datetime="@ENTRY_DATEISO@">@ENTRY_DATECAPTION@</time></p>
+    <h1>@ENTRY_CAPTION@</h1>
+  </header>
+  <div class="post-body">@ENTRY_BODY@</div>
+  <footer class="post-footer"><a href="@ENTRY_ARCHIVE_URL@">Browse the archive <span aria-hidden="true">→</span></a></footer>
+</article>

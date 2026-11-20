@@ -1,139 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@DESCRIPTION@">
-    <meta name="author" content="@COPYRIGHT@">
-    <script type="text/javascript" src="//use.typekit.net/rhi4otd.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-    <title>@TITLE@</title>
-    <script src='@BASEDIR@js/prettyprint.js' type='text/javascript'></script>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="@BASEDIR@css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="@BLOGWEBDIR@@RSSFILENAME@.rss2" />
-    <script src='@BASEDIR@prettyprint.js' type='text/javascript'></script>
-
-    <!-- Custom CSS -->
-    <link href="@BASEDIR@css/blog-post.css" rel="stylesheet">
-    <link rel='stylesheet' href='@BASEDIR@css/miguel-style.css' type='text/css' />
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    @ANALYTICS@
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="@DESCRIPTION@">
+  @ROBOTS_META@
+  @CANONICAL_LINK@
+  <title>@TITLE@</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="@BLOGWEBDIR@@RSSFILENAME@.rss2">
+  <link rel="stylesheet" href="@BASEDIR@css/miguel-style.css">
 </head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@BLOGWEBDIR@">@DESCRIPTION@</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-
-	<!-- Blog Post Content Column -->
-	<div class="col-lg-8">
-            @BLOG_ENTRIES@
-
-	    @PAGE_NAVIGATION@
-	</div>
-        <hr>
-
-<!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Blog Search</h4>
- 
-                   <!-- Google CSE Search Box Begins  -->
-                    <div><form action="https://google.com/cse" id="searchbox_017740955003523021154:1z0nz3i1mbw">
-                        <input type="hidden" name="cx" value="017740955003523021154:1z0nz3i1mbw" />
-                        <input type="text" name="q" size="25" />
-                        <input type="submit" name="sa" value="Search" />
-                      </form>
-                      <script type="text/javascript" src="https://google.com/coop/cse/brand?form=searchbox_017740955003523021154%3A1z0nz3i1mbw">
-                      </script>
-                    </div>
-                    <!-- Google CSE Search Box Ends -->
-
-                    <!-- /.input-group -->
-                </div>
-
-		@WIDGETS@
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>Archive</h4>
-                    <div class="row">
-		    @ARCHIVE_NAVIGATOR@
-                    </div>
-                    <!-- /.row -->
-                </div>
-
-                <!-- Side Widget Well -->
-                <!--div class="well">-->
-                <!--/div>-->
-
-            </div>
-	</div> <!-- row -->
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-		  This is a personal web page. Things said here do not
-		  represent the position of my employer. (C) 2001-2017.
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-
+<body class="@PAGE_CLASS@">
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="site-name" href="@BASEDIR@index.html">Miguel de Icaza<span class="site-name-dot">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="@BASEDIR@index.html">Writing</a>
+        <a href="@BASEDIR@archive/index.html">Archive</a>
+        <a href="@BASEDIR@@RSSFILENAME@.rss2">RSS</a>
+      </nav>
     </div>
-    <!-- /.container -->
+  </header>
 
-    <!-- jQuery -->
-    <script src="@BASEDIR@js/jquery.js"></script>
+  <main class="site-shell">
+    @PAGE_INTRO@
+    <div class="entries">@BLOG_ENTRIES@</div>
+    @ARCHIVE_SECTION@
+  </main>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="@BASEDIR@js/bootstrap.min.js"></script>
-
+  <footer class="site-footer">
+    <div class="site-shell footer-inner">
+      <p>Writing here is personal and does not represent my employer.</p>
+      <a href="mailto:@EDITOR@">Contact</a>
+    </div>
+  </footer>
 </body>
-
 </html>
