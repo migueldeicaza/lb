@@ -8,7 +8,7 @@
   @CANONICAL_LINK@
   <title>@TITLE@</title>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="@BLOGWEBDIR@@RSSFILENAME@.rss2">
-  <link rel="stylesheet" href="@BASEDIR@css/miguel-style.css">
+  <link rel="stylesheet" href="@BASEDIR@css/@STYLE_FILE@">
 </head>
 <body class="@PAGE_CLASS@">
   <header class="site-header">

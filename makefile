@@ -2,6 +2,8 @@
 BASE_REMOTE=miguel@45.55.96.137:web/tirania.org/
 REMOTE_BLOG=$(BASE_REMOTE)blog
 REMOTE_MONOMAC=$(BASE_REMOTE)monomac
+STYLE_HASH=$(shell shasum -a 256 startbootstrap/css/miguel-style.css | cut -c1-12)
+STYLE_FILE=blog-$(STYLE_HASH).css
 
 ASSEMBLIES=	-r:RSS.NET.dll	\
 		-r:System.Web	
@@ -31,8 +33,9 @@ c: lb.exe twentyten/blog-template.standard
 #
 k: lb.exe startbootstrap/blog-template startbootstrap/summary-template
 	-mkdir -p sb-gen/css
-	cp startbootstrap/css/miguel-style.css sb-gen/css/miguel-style.css
-	mono --debug lb.exe -c config.xml -p sb-gen -b startbootstrap/blog-template -e startbootstrap/entry-template.start -s startbootstrap/summary-template
+	cp startbootstrap/css/miguel-style.css sb-gen/css/$(STYLE_FILE)
+	sed 's/@STYLE_FILE@/$(STYLE_FILE)/g' startbootstrap/blog-template > sb-gen/blog-template
+	mono --debug lb.exe -c config.xml -p sb-gen -b sb-gen/blog-template -e startbootstrap/entry-template.start -s startbootstrap/summary-template
 
 #
 # Builds the MonoMac blog
@@ -58,7 +61,7 @@ pushb: b
 	make do-push DIR=output REMOTE_DIRECTORY=$(REMOTE_BLOG)
 
 pushc: k 
-	rsync -zu --checksum -pr -v --rsh=ssh sb-gen/css/miguel-style.css $(REMOTE_BLOG)/css/
+	rsync -zu --checksum -pr -v --rsh=ssh sb-gen/css/$(STYLE_FILE) $(REMOTE_BLOG)/css/
 	make do-push DIR=sb-gen REMOTE_DIRECTORY=$(REMOTE_BLOG)
 
 pushm: m

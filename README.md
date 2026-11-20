@@ -83,6 +83,8 @@ build and upload it. Its theme lives in `startbootstrap/blog-template`,
 `startbootstrap/css/miguel-style.css`. Despite the directory name, this theme
 uses plain CSS and does not load Bootstrap or jQuery. The home and month pages
 show short excerpts; individual posts retain their existing archive URLs.
+The build gives the CSS a content-based filename so cached styles cannot lag
+behind newly published pages.
 The generated `sitemap.xml` lists individual posts. Archive listings and old
 `pageN.html` pages remain available for links but are marked `noindex`.
 
